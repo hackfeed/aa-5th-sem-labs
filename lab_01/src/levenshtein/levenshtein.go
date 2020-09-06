@@ -1,5 +1,7 @@
 package levenshtein
 
+import "math"
+
 // Recursive used to find Levenshtein distance with recursive method.
 func Recursive(fWord, sWord string) int {
 	n, m := len(fWord), len(sWord)
@@ -7,30 +9,21 @@ func Recursive(fWord, sWord string) int {
 	return getDistance(fWord, sWord, n, m)
 }
 
-func getDistance(fWord, sWord string, i, j int) int {
-	if i == 0 {
-		return j
-	}
-	if j == 0 && i > 0 {
-		return i
-	}
-
-	eq := 1
-	if fWord[i-1] == sWord[j-1] {
-		eq = 0
-	}
-
-	return minFromThree(
-		getDistance(fWord, sWord, i, j-1)+1,
-		getDistance(fWord, sWord, i-1, j)+1,
-		getDistance(fWord, sWord, i-1, j-1)+eq)
-}
-
 // RecursiveMatrix used to find Levenshtein distance with recursive method and matrix filling.
 func RecursiveMatrix(fWord, sWord string) (int, MInt) {
-	distMat := makeMatrix(len(fWord), len(sWord))
+	var (
+		n, m, shDist int
+	)
 
-	return 5, distMat
+	n, m = len(fWord), len(sWord)
+
+	distMat := makeMatrixRec(n, m)
+
+	getDistanceRec(fWord, sWord, n, m, distMat)
+
+	shDist = distMat[n][m]
+
+	return shDist, distMat
 }
 
 // IterativeMatrix used to find Levenshtein distance with matrix filling.
@@ -99,6 +92,64 @@ func DamerauLevenshtein(fWord, sWord string) (int, MInt) {
 	shDist = distMat[n][m]
 
 	return shDist, distMat
+}
+
+func getDistanceRec(fWord, sWord string, i, j int, mat MInt) int {
+	if mat[i][j] != math.MaxInt16 {
+		return mat[i][j]
+	}
+
+	if i == 0 {
+		mat[i][j] = j
+		return mat[i][j]
+	}
+	if j == 0 && i > 0 {
+		mat[i][j] = i
+		return mat[i][j]
+	}
+	eq := 1
+	if fWord[i-1] == sWord[j-1] {
+		eq = 0
+	}
+
+	mat[i][j] = minFromThree(
+		getDistanceRec(fWord, sWord, i, j-1, mat)+1,
+		getDistanceRec(fWord, sWord, i-1, j, mat)+1,
+		getDistanceRec(fWord, sWord, i-1, j-1, mat)+eq)
+	return mat[i][j]
+}
+
+func makeMatrixRec(n, m int) MInt {
+	mat := make(MInt, n+1)
+	for i := range mat {
+		mat[i] = make([]int, m+1)
+	}
+
+	for i := 0; i < n+1; i++ {
+		for j := 0; j < m+1; j++ {
+			mat[i][j] = math.MaxInt16
+		}
+	}
+
+	return mat
+}
+
+func getDistance(fWord, sWord string, i, j int) int {
+	if i == 0 {
+		return j
+	}
+	if j == 0 && i > 0 {
+		return i
+	}
+	eq := 1
+	if fWord[i-1] == sWord[j-1] {
+		eq = 0
+	}
+
+	return minFromThree(
+		getDistance(fWord, sWord, i, j-1)+1,
+		getDistance(fWord, sWord, i-1, j)+1,
+		getDistance(fWord, sWord, i-1, j-1)+eq)
 }
 
 func makeMatrix(n, m int) MInt {

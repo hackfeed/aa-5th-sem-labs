@@ -31,4 +31,11 @@ func main() {
 	distRec := levenshtein.Recursive(fWord, sWord)
 	fmt.Printf("Recursive method without matrix filling: \n")
 	fmt.Printf("Distance: %d\n\n", distRec)
+
+	fmt.Println()
+
+	distRM, matRM := levenshtein.RecursiveMatrix(fWord, sWord)
+	fmt.Printf("Recursive method with matrix filling: \n")
+	matRM.PrintMatrix()
+	fmt.Printf("Distance: %d\n\n", distRM)
 }
