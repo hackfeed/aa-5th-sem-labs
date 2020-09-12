@@ -24,14 +24,14 @@ func BenchmarkRecursiveLen10(b *testing.B) {
 	}
 }
 
-// func BenchmarkRecursiveLen15(b *testing.B) {
-// 	fWord := "characteristics"
-// 	sWord := "recommendations"
+func BenchmarkRecursiveLen15(b *testing.B) {
+	fWord := "characteristics"
+	sWord := "recommendations"
 
-// 	for i := 0; i < b.N; i++ {
-// 		Recursive(fWord, sWord)
-// 	}
-// }
+	for i := 0; i < b.N; i++ {
+		Recursive(fWord, sWord)
+	}
+}
 
 // RecursiveMatrix method becnhmarks.
 
