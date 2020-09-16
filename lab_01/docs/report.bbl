@@ -1,0 +1,51 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibAnnote\long\def\BibAnnote#1{(#1)}\else\fi
+\ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
+
+\bibitem{Levenshtein}
+\selectlanguageifdefined{russian}
+Левенштейн~В.~И. Двоичные коды с
+  исправлением выпадений, вставок и
+  замещений символов.
+\newblock Доклады АН СССР, 1965.
+\newblock Т.~163.
+\newblock {С.}~845--848.
+
+\bibitem{golang}
+\selectlanguageifdefined{russian}
+The Go Programming Language.
+\newblock Режим доступа: \url{https://golang.org/}.
+\newblock Дата обращения: 11.09.2020.
+
+\bibitem{manjaro}
+\selectlanguageifdefined{russian}
+Manjaro -- enjoy the simplicity.
+\newblock Режим доступа: \url{https://manjaro.org/}.
+\newblock Дата обращения: 14.09.2020.
+
+\bibitem{linux}
+\selectlanguageifdefined{russian}
+Linux -- Википедия.
+\newblock Режим доступа: \url{https://ru.wikipedia.org/wiki/Linux}.
+\newblock Дата обращения: 14.09.2020.
+
+\bibitem{ryzen}
+\selectlanguageifdefined{russian}
+Мобильный процессор AMD Ryzen™ 7 3700U с графикой
+  Radeon™ RX Vega 10.
+\newblock Режим доступа:
+  \url{https://www.amd.com/ru/products/apu/amd-ryzen-7-3700u}.
+\newblock Дата обращения: 14.09.2020.
+
+\bibitem{gotest}
+\selectlanguageifdefined{russian}
+testing -- The Go Programming Language.
+\newblock Режим доступа: \url{https://golang.org/pkg/testing/}.
+\newblock Дата обращения: 12.09.2020.
+
+\end{thebibliography}

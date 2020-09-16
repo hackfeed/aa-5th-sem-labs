@@ -4,9 +4,11 @@ import "math"
 
 // Recursive used to find Levenshtein distance with recursive method.
 func Recursive(fWord, sWord string) int {
-	n, m := len(fWord), len(sWord)
+	fWordRune, sWordRune := []rune(fWord), []rune(sWord)
 
-	return getDistance(fWord, sWord, n, m)
+	n, m := len(fWordRune), len(sWordRune)
+
+	return getDistance(fWordRune, sWordRune, n, m)
 }
 
 // RecursiveMatrix used to find Levenshtein distance with recursive method and matrix filling.
@@ -15,11 +17,13 @@ func RecursiveMatrix(fWord, sWord string) (int, MInt) {
 		n, m, shDist int
 	)
 
-	n, m = len(fWord), len(sWord)
+	fWordRune, sWordRune := []rune(fWord), []rune(sWord)
+
+	n, m = len(fWordRune), len(sWordRune)
 
 	distMat := makeMatrixRec(n, m)
 
-	getDistanceRec(fWord, sWord, n, m, distMat)
+	getDistanceRec(fWordRune, sWordRune, n, m, distMat)
 
 	shDist = distMat[n][m]
 
@@ -32,7 +36,9 @@ func IterativeMatrix(fWord, sWord string) (int, MInt) {
 		n, m, dist, shDist int
 	)
 
-	n, m = len(fWord), len(sWord)
+	fWordRune, sWordRune := []rune(fWord), []rune(sWord)
+
+	n, m = len(fWordRune), len(sWordRune)
 
 	distMat := makeMatrix(n, m)
 
@@ -41,7 +47,7 @@ func IterativeMatrix(fWord, sWord string) (int, MInt) {
 			insDist := distMat[i][j-1] + 1
 			delDist := distMat[i-1][j] + 1
 			eq := 1
-			if fWord[i-1] == sWord[j-1] {
+			if fWordRune[i-1] == sWordRune[j-1] {
 				eq = 0
 			}
 			eqDist := distMat[i-1][j-1] + eq
@@ -62,7 +68,9 @@ func DamerauLevenshtein(fWord, sWord string) (int, MInt) {
 		n, m, dist, shDist, transDist int
 	)
 
-	n, m = len(fWord), len(sWord)
+	fWordRune, sWordRune := []rune(fWord), []rune(sWord)
+
+	n, m = len(fWordRune), len(sWordRune)
 
 	distMat := makeMatrix(n, m)
 
@@ -71,7 +79,7 @@ func DamerauLevenshtein(fWord, sWord string) (int, MInt) {
 			insDist := distMat[i][j-1] + 1
 			delDist := distMat[i-1][j] + 1
 			eq := 1
-			if fWord[i-1] == sWord[j-1] {
+			if fWordRune[i-1] == sWordRune[j-1] {
 				eq = 0
 			}
 			eqDist := distMat[i-1][j-1] + eq
@@ -80,7 +88,7 @@ func DamerauLevenshtein(fWord, sWord string) (int, MInt) {
 				transDist = distMat[i-2][j-2] + 1
 			}
 
-			if transDist != -1 && fWord[i-1] == sWord[j-2] && fWord[i-2] == sWord[j-1] {
+			if transDist != -1 && fWordRune[i-1] == sWordRune[j-2] && fWordRune[i-2] == sWordRune[j-1] {
 				dist = minFromFour(insDist, delDist, eqDist, transDist)
 			} else {
 				dist = minFromThree(insDist, delDist, eqDist)
@@ -94,7 +102,7 @@ func DamerauLevenshtein(fWord, sWord string) (int, MInt) {
 	return shDist, distMat
 }
 
-func getDistanceRec(fWord, sWord string, i, j int, mat MInt) int {
+func getDistanceRec(fWord, sWord []rune, i, j int, mat MInt) int {
 	if mat[i][j] != math.MaxInt16 {
 		return mat[i][j]
 	}
@@ -134,7 +142,7 @@ func makeMatrixRec(n, m int) MInt {
 	return mat
 }
 
-func getDistance(fWord, sWord string, i, j int) int {
+func getDistance(fWord, sWord []rune, i, j int) int {
 	if i == 0 {
 		return j
 	}
