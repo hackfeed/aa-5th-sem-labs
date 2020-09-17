@@ -12,40 +12,40 @@
 Левенштейн~В.~И. Двоичные коды с
   исправлением выпадений, вставок и
   замещений символов.
-\newblock Доклады АН СССР, 1965.
+\newblock -- М.: Доклады АН СССР, 1965.
 \newblock Т.~163.
 \newblock {С.}~845--848.
 
 \bibitem{golang}
 \selectlanguageifdefined{russian}
-The Go Programming Language.
-\newblock Режим доступа: \url{https://golang.org/}.
-\newblock Дата обращения: 11.09.2020.
+The Go Programming Language [Электронный ресурс].
+\newblock Режим доступа: \url{https://golang.org/} (дата
+  обращения: 11.09.2020).
 
 \bibitem{manjaro}
 \selectlanguageifdefined{russian}
-Manjaro -- enjoy the simplicity.
-\newblock Режим доступа: \url{https://manjaro.org/}.
-\newblock Дата обращения: 14.09.2020.
+Manjaro -- enjoy the simplicity [Электронный ресурс].
+\newblock Режим доступа: \url{https://manjaro.org/} (дата
+  обращения: 14.09.2020).
 
 \bibitem{linux}
 \selectlanguageifdefined{russian}
-Linux -- Википедия.
-\newblock Режим доступа: \url{https://ru.wikipedia.org/wiki/Linux}.
-\newblock Дата обращения: 14.09.2020.
+Linux -- Википедия [Электронный ресурс].
+\newblock Режим доступа: \url{https://ru.wikipedia.org/wiki/Linux}
+  (дата обращения: 14.09.2020).
 
 \bibitem{ryzen}
 \selectlanguageifdefined{russian}
 Мобильный процессор AMD Ryzen™ 7 3700U с графикой
-  Radeon™ RX Vega 10.
+  Radeon™ RX Vega 10 [Электронный ресурс].
 \newblock Режим доступа:
-  \url{https://www.amd.com/ru/products/apu/amd-ryzen-7-3700u}.
-\newblock Дата обращения: 14.09.2020.
+  \url{https://www.amd.com/ru/products/apu/amd-ryzen-7-3700u} (дата
+  обращения: 14.09.2020).
 
 \bibitem{gotest}
 \selectlanguageifdefined{russian}
-testing -- The Go Programming Language.
-\newblock Режим доступа: \url{https://golang.org/pkg/testing/}.
-\newblock Дата обращения: 12.09.2020.
+testing -- The Go Programming Language [Электронный ресурс].
+\newblock Режим доступа: \url{https://golang.org/pkg/testing/}
+  (дата обращения: 12.09.2020).
 
 \end{thebibliography}

@@ -8,6 +8,8 @@
 
 \section{Технические характеристики}
 
+Технические характеристики устройства, на котором выполнялось тестирование:
+
 \begin{itemize}
 	\item Операционная система: Manjaro \cite{manjaro} Linux \cite{linux} 20.1 64-bit.
 	\item Память: 16 GiB.
@@ -30,13 +32,13 @@
 	]{../src/levenshtein/levenshtein_test.go}
 \end{lstinputlisting}
 
-Результаты замеров приведены в таблице \ref{tbl:time}.
+Результаты замеров приведены в таблице \ref{tbl:time}. В данной таблице для значений, для которых тестирование не выполнялось, в поле результата находится NaN.
 На рисунках \ref{plt:time_levenshtein} и \ref{plt:time_dl} приведены графики зависимостей времени работы алгоритмов от длины строк.
 
-\clearpage
-
-\begin{table}
+\begin{table}[h]
 	\begin{center}
+		\caption{Замер времени для строк, размеромот 5 до 200}
+		\label{tbl:time}
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline
 			                      & \multicolumn{4}{c|}{\bfseries Время, нс}                                    \\ \cline{2-5}
@@ -46,11 +48,9 @@
 			\\\hline
 		\end{tabular}
 	\end{center}
-	\caption{Замер времени для строк, размеромот 5 до 200}
-	\label{tbl:time}
 \end{table}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -70,7 +70,7 @@
 	\label{plt:time_levenshtein}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
