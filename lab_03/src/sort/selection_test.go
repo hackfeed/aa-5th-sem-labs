@@ -5,93 +5,10 @@ import (
 	"testing"
 )
 
-var N = 1000
+// Selection sort benchmarks.
 
-// Bubble sort benchmarks.
-
-func BenchmarkBubbleSorted(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Bubble(narr)
-	}
-}
-
-func BenchmarkBubbleReverseSorted(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = N - i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Bubble(narr)
-	}
-}
-
-func BenchmarkBubbleRandom(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = rand.Intn(N-i) + i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Bubble(narr)
-	}
-}
-
-// Insertion sort benchmarks.
-
-func BenchmarkInsertionSorted(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Insertion(narr)
-	}
-}
-
-func BenchmarkInsertionReverseSorted(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = N - i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Insertion(narr)
-	}
-}
-
-func BenchmarkInsertionRandom(b *testing.B) {
-	arr := make([]int, N)
-	narr := make([]int, N)
-	for i := 0; i < N; i++ {
-		arr[i] = rand.Intn(N-i) + i
-	}
-
-	for i := 0; i < b.N; i++ {
-		copy(narr, arr)
-		Insertion(narr)
-	}
-}
-
-// Selection sort becnhmarks.
-
-func BenchmarkSelectionSorted(b *testing.B) {
+func BenchmarkSelectionSorted10(b *testing.B) {
+	N := 10
 	arr := make([]int, N)
 	narr := make([]int, N)
 	for i := 0; i < N; i++ {
@@ -104,7 +21,36 @@ func BenchmarkSelectionSorted(b *testing.B) {
 	}
 }
 
-func BenchmarkSelectionReverseSorted(b *testing.B) {
+func BenchmarkSelectionSorted100(b *testing.B) {
+	N := 100
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionSorted1000(b *testing.B) {
+	N := 1000
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionReverseSorted10(b *testing.B) {
+	N := 10
 	arr := make([]int, N)
 	narr := make([]int, N)
 	for i := 0; i < N; i++ {
@@ -117,7 +63,64 @@ func BenchmarkSelectionReverseSorted(b *testing.B) {
 	}
 }
 
-func BenchmarkSelectionRandom(b *testing.B) {
+func BenchmarkSelectionReverseSorted100(b *testing.B) {
+	N := 100
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = N - i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionReverseSorted1000(b *testing.B) {
+	N := 1000
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = N - i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionRandom10(b *testing.B) {
+	N := 10
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = rand.Intn(N-i) + i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionRandom100(b *testing.B) {
+	N := 100
+	arr := make([]int, N)
+	narr := make([]int, N)
+	for i := 0; i < N; i++ {
+		arr[i] = rand.Intn(N-i) + i
+	}
+
+	for i := 0; i < b.N; i++ {
+		copy(narr, arr)
+		Selection(narr)
+	}
+}
+
+func BenchmarkSelectionRandom1000(b *testing.B) {
+	N := 1000
 	arr := make([]int, N)
 	narr := make([]int, N)
 	for i := 0; i < N; i++ {
