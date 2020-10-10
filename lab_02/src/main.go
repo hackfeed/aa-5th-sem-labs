@@ -38,4 +38,7 @@ func main() {
 	fmt.Println(aurora.Cyan("Обычное умножение:"))
 	smmat := matrix.SimpleMult(amat, bmat)
 	smmat.PrintMatrix()
+	fmt.Println(aurora.Cyan("Умножение по Винограду:"))
+	wmmat := matrix.WinogradMult(amat, bmat)
+	wmmat.PrintMatrix()
 }
