@@ -1,6 +1,9 @@
 package matrix
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 // ReadMatrix used to read matrix with n rows and m columns.
 func ReadMatrix(n, m int) MInt {
@@ -22,6 +25,14 @@ func ReadNum() int {
 	fmt.Scanln(&num)
 
 	return num
+}
+
+func randomFill(mat MInt, max int) {
+	for i := 0; i < mat.n; i++ {
+		for j := 0; j < mat.m; j++ {
+			mat.mat[i][j] = rand.Intn(max)
+		}
+	}
 }
 
 func formResMat(n, m int) MInt {

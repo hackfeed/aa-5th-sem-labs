@@ -41,4 +41,7 @@ func main() {
 	fmt.Println(aurora.Cyan("Умножение по Винограду:"))
 	wmmat := matrix.WinogradMult(amat, bmat)
 	wmmat.PrintMatrix()
+	fmt.Println(aurora.Cyan("Умножение по Винограду (улучшенное):"))
+	wimmat := matrix.WinogradMult(amat, bmat)
+	wimmat.PrintMatrix()
 }
