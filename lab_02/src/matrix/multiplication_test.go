@@ -66,6 +66,42 @@ func BenchmarkSimple500(b *testing.B) {
 	}
 }
 
+func BenchmarkSimple600(b *testing.B) {
+	N := 600
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		SimpleMult(amat, bmat)
+	}
+}
+
+func BenchmarkSimple700(b *testing.B) {
+	N := 700
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		SimpleMult(amat, bmat)
+	}
+}
+
+func BenchmarkSimple800(b *testing.B) {
+	N := 800
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		SimpleMult(amat, bmat)
+	}
+}
+
 // Winograd multiplication benchmarks.
 
 func BenchmarkWinograd100(b *testing.B) {
@@ -128,6 +164,42 @@ func BenchmarkWinograd500(b *testing.B) {
 	}
 }
 
+func BenchmarkWinograd600(b *testing.B) {
+	N := 600
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMult(amat, bmat)
+	}
+}
+
+func BenchmarkWinograd700(b *testing.B) {
+	N := 700
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMult(amat, bmat)
+	}
+}
+
+func BenchmarkWinograd800(b *testing.B) {
+	N := 800
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMult(amat, bmat)
+	}
+}
+
 // Winograd improved multiplication benchmarks.
 
 func BenchmarkWinogradImp100(b *testing.B) {
@@ -180,6 +252,42 @@ func BenchmarkWinogradImp400(b *testing.B) {
 
 func BenchmarkWinogradImp500(b *testing.B) {
 	N := 500
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMultImp(amat, bmat)
+	}
+}
+
+func BenchmarkWinogradImp600(b *testing.B) {
+	N := 600
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMultImp(amat, bmat)
+	}
+}
+
+func BenchmarkWinogradImp700(b *testing.B) {
+	N := 700
+	amat := formResMat(N, N)
+	randomFill(amat, 100)
+	bmat := formResMat(N, N)
+	randomFill(bmat, 100)
+
+	for i := 0; i < b.N; i++ {
+		WinogradMultImp(amat, bmat)
+	}
+}
+
+func BenchmarkWinogradImp800(b *testing.B) {
+	N := 800
 	amat := formResMat(N, N)
 	randomFill(amat, 100)
 	bmat := formResMat(N, N)
