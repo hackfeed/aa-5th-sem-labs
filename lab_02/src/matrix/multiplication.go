@@ -25,7 +25,7 @@ func WinogradMult(amat, bmat MInt) MInt {
 	for i := 0; i < rmat.n; i++ {
 		for j := 0; j < rmat.m; j++ {
 			for k := 0; k < rmat.m/2; k++ {
-				rmat.mat[i][j] += (amat.mat[i][k*2]+bmat.mat[k*2+1][j])*(amat.mat[i][k*2+1]+bmat.mat[k*2][j]) -
+				rmat.mat[i][j] = rmat.mat[i][j] + (amat.mat[i][k*2]+bmat.mat[k*2+1][j])*(amat.mat[i][k*2+1]+bmat.mat[k*2][j]) -
 					rowcf.mat[i][k] - colcf.mat[k][j]
 			}
 		}
