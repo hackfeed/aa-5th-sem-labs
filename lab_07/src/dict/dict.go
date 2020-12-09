@@ -71,13 +71,15 @@ func (darr DictArray) Pick(l string) string {
 
 // Brute used to find value using bruteforce method.
 func (darr DictArray) Brute(gt string) Dict {
+	var r Dict
+
 	for _, d := range darr {
 		if d["gamertag"] == gt {
 			return d
 		}
 	}
 
-	return darr[0]
+	return r
 }
 
 // Binary used to find value using binary search method.
@@ -150,7 +152,7 @@ func (darr DictArray) FAnalysis() FreqArray {
 func (farr FreqArray) Combined(w string) Dict {
 	var (
 		l string = w[:1]
-		r Dict   = farr[0].darr[0]
+		r Dict
 	)
 
 	for _, d := range farr {
