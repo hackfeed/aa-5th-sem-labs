@@ -8,21 +8,21 @@ import (
 
 // SearchAnt used to perform Ant algorithm for given colony in d days.
 func (c *Colony) SearchAnt(d int) []int {
-	s := make([]int, len(c.w))
+	r := make([]int, len(c.w))
 
-	for n := 0; n < d; n++ {
-		for i := 0; i < len(c.w); i++ {
-			a := c.CreateAnt(i)
+	for i := 0; i < d; i++ {
+		for j := 0; j < len(c.w); j++ {
+			a := c.CreateAnt(j)
 			a.moveAnt()
 			cur := a.getDistance()
 
-			if (s[i] == 0) || (cur < s[i]) {
-				s[i] = cur
+			if (r[j] == 0) || (cur < r[j]) {
+				r[j] = cur
 			}
 		}
 	}
 
-	return s
+	return r
 }
 
 // SearchBrute used to perform brute algorithm.
@@ -32,19 +32,19 @@ func SearchBrute(w [][]int) []int {
 		r    = make([]int, len(w))
 	)
 
-	for k := 0; k < len(w); k++ {
+	for i := 0; i < len(w); i++ {
 		var (
 			rts  = make([][]int, 0)
 			sum  = math.MaxInt64
 			curr = 0
 		)
-		getRoutes(k, w, path, &rts)
+		getRoutes(i, w, path, &rts)
 
-		for i := 0; i < len(rts); i++ {
+		for j := 0; j < len(rts); j++ {
 			curr = 0
 
-			for j := 0; j < len(rts[i])-1; j++ {
-				curr += w[rts[i][j]][rts[i][j+1]]
+			for k := 0; k < len(rts[j])-1; k++ {
+				curr += w[rts[j][k]][rts[j][k+1]]
 			}
 
 			if curr < sum {
@@ -52,7 +52,7 @@ func SearchBrute(w [][]int) []int {
 			}
 		}
 
-		r[k] = sum
+		r[i] = sum
 	}
 
 	return r
@@ -156,19 +156,19 @@ func (a *Ant) getDistance() int {
 func (a *Ant) updatePh() {
 	delta := 0.0
 
-	for k := 0; k < len(a.col.ph); k++ {
-		for i, j := range a.col.ph[k] {
-			if a.col.w[k][i] != 0 {
-				if a.isv[k][i] {
-					delta = a.col.q / float64(a.col.w[k][i])
+	for i := 0; i < len(a.col.ph); i++ {
+		for j, ph := range a.col.ph[i] {
+			if a.col.w[i][j] != 0 {
+				if a.isv[i][j] {
+					delta = a.col.q / float64(a.col.w[i][j])
 				} else {
 					delta = 0
 				}
-				a.col.ph[k][i] = (1 - a.col.p) * (float64(j) + delta)
+				a.col.ph[i][j] = (1 - a.col.p) * (float64(ph) + delta)
 			}
 
-			if a.col.ph[k][i] <= 0 {
-				a.col.ph[k][i] = 0.1
+			if a.col.ph[i][j] <= 0 {
+				a.col.ph[i][j] = 0.1
 			}
 		}
 	}
@@ -196,11 +196,11 @@ func getWay(p []float64) int {
 	rn = r.Float64() * sum
 	sum = 0
 
-	for i, j := range p {
-		if rn > sum && rn < sum+j {
+	for i, val := range p {
+		if rn > sum && rn < sum+val {
 			return i
 		}
-		sum += j
+		sum += val
 	}
 
 	return -1
